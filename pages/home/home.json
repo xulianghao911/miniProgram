@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "baby记录",
+  "component": true,
+  "usingComponents": {
+    "diapers": "diapers/diapers",
+    "height": "height/height",
+    "milkPowder": "milkPowder/milkPowder",
+    "suckle": "suckle/suckle",
+    "weight": "weight/weight",
+    "manage": "manage/manage"
+  }
+}

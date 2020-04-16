@@ -1,0 +1,40 @@
+<view class='mask' wx:if='{{show}}'>
+  <view class='modal-content'>
+  <view style='text-align:center;margin-top:15px;position:relative;'>
+    <text>操作</text>
+    <button size='mini' type='warn' bindtap='deleteData' wx:if='{{modalData.id > 0}}' 
+    style='float:right;margin-right:15px;position:absolute;top:1%;right:6px;'>删除</button>
+  </view>
+    <view class='main-content'> 
+      <view class="table">
+        <view class="tr">
+            <view class="th">日期</view>
+            <view class="th">时间</view>
+            <view class="th">喂养量(ml)</view>
+        </view>
+        <view class="tr">
+            <view class="td">
+              <picker mode="date" value="{{modalData.suckleDate}}" 
+                start="2015-01-01" end="2035-12-31" bindchange="suckleDateChange">
+                    <view class="weui-input">{{modalData.suckleDate}}</view>
+              </picker>
+            </view>
+            <view class="td">
+              <picker mode="time" value="{{modalData.suckleTime}}" 
+                start="00:00" end="23:59" bindchange="suckleTimeChange">
+                    <view class="weui-input">{{modalData.suckleTime}}</view>
+              </picker>
+            </view>
+            <view class="td">
+              <input type='number' class="weui-input" placeholder="请输入喂养量"  
+                bindinput="appetiteInput"  value='{{modalData.appetite}}'/>
+            </view>
+        </view>
+      </view>
+    </view> 
+    <view class='modal-btn-wrapper'> 
+      <view class='cancel-btn' style='color:rgba(7,17,27,0.6)' bindtap='cancel'>取消</view> 
+      <view class='confirm-btn' style='color:#13b5f5' bindtap='save'>确定</view> 
+    </view>
+  </view> 
+</view>

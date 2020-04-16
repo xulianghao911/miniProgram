@@ -1,0 +1,47 @@
+<scroll-view class="tab-scoller " scroll-x="true"  scroll-left="{{scrollLength}}">
+        <block wx:for="{{tabList}}" wx:key="code">
+          <view class="tab-view" data-index="{{index}}" id="{{item.tabCode}}" bindtap="switchTab">
+            <text class="tab-text active" wx:if="{{item.tabCode == currentTab}}">{{item.tabName}}
+            </text>
+            <text class="tab-text" wx:else>{{item.tabName}}</text>
+          </view>
+        </block>
+      </scroll-view> 
+<view class='page js_show' style='height:100%'>
+  <view class="weui-tab" style='height:100%'>
+    <!-- <view class='weui-navbar'>
+      <view id='tabSuckle' class='weui-navbar__item {{currentTab === 4 ? "weui-bar__item_on": ""}}'
+        bindtap='switchTab'>
+        <view class="weui-navbar__title">喂奶</view>
+      </view>
+      <view id='tabDiapers' class='weui-navbar__item {{currentTab === 2 ? "weui-bar__item_on" : ""}}' 
+        bindtap='switchTab'>
+        <view class="weui-navbar__title">纸尿裤</view>
+      </view>
+      <view id='tabMilkPowder' class='weui-navbar__item {{currentTab === 3 ? "weui-bar__item_on": ""}}'
+        bindtap='switchTab'>
+        <view class="weui-navbar__title">奶粉</view>
+      </view>
+      <view id='tabHeight' class='weui-navbar__item {{currentTab === 0 ? "weui-bar__item_on" : ""}}'
+        bindtap='switchTab'>
+        <view class="weui-navbar__title">身高</view>
+      </view>
+      <view id='tabWeight' class='weui-navbar__item {{currentTab === 1 ? "weui-bar__item_on" : ""}}'
+        bindtap='switchTab'>
+        <view class="weui-navbar__title">体重</view>
+      </view>
+      <view id='makeBabyCode' class='weui-navbar__item {{currentTab === 5 ? "weui-bar__item_on": ""}}'
+        bindtap='switchTab'>
+        <view class="weui-navbar__title">信息管理</view>
+      </view>
+    </view> -->
+    <view class="weui-tab__panel" style="padding-top: 0;">
+      <view class='weui-tab__content' wx:if="{{currentTab === 'height'}}"><height/></view>
+      <view class='weui-tab__content' wx:if="{{currentTab === 'weight'}}"><weight/></view>
+      <view class='weui-tab__content' wx:if="{{currentTab === 'diapers'}}"><diapers/></view>
+      <view class='weui-tab__content' wx:if="{{currentTab === 'milkPowder'}}"><milkPowder/></view>
+      <view class='weui-tab__content' wx:if="{{currentTab === 'suckle'}}"><suckle/></view>
+      <view class='weui-tab__content' wx:if="{{currentTab === 'manage'}}"><manage/></view>
+    </view>
+  </view>
+</view>

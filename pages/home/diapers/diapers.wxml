@@ -1,0 +1,18 @@
+<view class="page"  height='100%'>
+    <view class="table">
+        <view class="tr">
+            <view class="th">产品</view>
+            <view class="th">开始使用时间</view>
+            <view class="th">结束使用时间</view>
+        </view>
+        <view class="tr" wx:for="{{diapersList}}" wx:key="navItems" wx:for-item="item" data-id='{{item}}' bindtap="modal" >
+            <view class="td">{{item.name}}{{item.sizeName}}号{{item.number}}片</view>
+            <view class="td">{{item.beginDate == null ? '' : item.beginDate}}</view>
+            <view class="td">{{item.endDate == null ? '' : item.endDate}}</view>
+        </view>
+    </view>
+    <button type="primary" size='default' bindtap="modal" data-id=''>添加数据</button>
+</view>
+<modal show="{{showModal}}" style="height:200px" modalData='{{modalData}}' bindcancel="modalCancel" bindconfirm='modalSave' bind:myevent="onMyEvent"> 
+  <view class='modal-content'><saveModal/></view> 
+</modal>

@@ -1,0 +1,105 @@
+<view class="page">
+  <view class="weui-cells__title">
+    <text>宝宝信息</text>
+    <button size='mini' type='primary' style='float:right' bindtap='codeMake' wx:if='{{type == 0}}'>生成识别码</button>
+    <button size='mini' type='primary' style='float:right' bindtap='infoShow' wx:if='{{type == 1}}'>信息显示</button>
+  </view>
+  <view class="weui-cells weui-cells_form" wx:if='{{type == 0}}'>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+          <label class="weui-label">头像</label>
+      </view>
+      <view class="weui-cell__bd">
+          <view class='ui_uploader_cell'>
+            <!-- 根据已选择的图片临时路径数组展示图片-->
+            <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{imgKey}}">
+              <!-- 删除-->
+              <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red"/>
+              <!-- 图片-->
+              <image bindtap='showImg' data-index="{{index}}" src='{{item.small}}'></image>
+            </view>
+            <!-- 上传按钮+框 -->
+            <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+          </view>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">姓名</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入姓名" type="text" value='{{babyInfo.name}}' 
+            bindchange="nameChange"/>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+          <label class="weui-label">性别</label>
+      </view>
+      <view class="weui-cell__bd">
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio" wx:for="{{sexList}}" wx:key='itemKey'>
+              <radio value="{{item.sex}}" checked="{{item.sex == babyInfo.sex}}"/>{{item.sexName}}
+            </label>
+          </radio-group>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+          <label class="weui-label">出生日期</label>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{babyInfo.date}}" start="2018-01-01" end="2050-12-31" 
+          bindchange="bindDateChange">
+          <view class="picker">
+            {{babyInfo.date}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+          <label class="weui-label">出生时间</label>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="time" value="{{babyInfo.time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+          <view class="picker">
+           {{babyInfo.time}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+          <label class="weui-label">民族</label>
+      </view>
+      <view class="weui-cell__bd">
+          <picker mode="selector" bindchange="nationChange" range-key='nation'  value="{{index}}" 
+            range="{{nationList}}">
+            <view class="picker">
+              {{nationList[babyInfo.nation - 1].nation}}
+            </view>
+          </picker>
+      </view>
+    </view>
+  </view>
+  <view  class="weui-cells weui-cells_form" wx:if='{{type == 1}}'>
+    <view class="weui-cell">
+      <view class="weui-cell__hd"><label class="weui-label">识别码</label></view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入识别码" type="text" value='{{code}}'            
+              disabled="true"/>
+      </view>
+    </view>
+  </view>
+  <view style='margin-top:20px'>
+    <button type='primary' bindtap='save' wx:if='{{type == 0}}'>修改</button>
+    <button type='warn' bindtap='copyText' wx:if='{{type == 1}}'>复制</button>
+  </view>
+  <view wx:if='{{type == 1}}'>
+    <text style='color:gray;'>
+    将识别码复制发送给相关人员，该人员即可管理宝宝信息
+    </text>
+  </view>
+</view>
+
+
+

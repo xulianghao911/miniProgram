@@ -1,0 +1,16 @@
+<view class="page"  height='100%'>
+    <view class="table">
+        <view class="tr">
+            <view class="th">日期时间</view>
+            <view class="th">饭量(ml)</view>
+        </view>
+        <view class="tr" wx:for="{{suckleList}}" wx:key="navItems" wx:for-item="item" data-id='{{item}}' bindtap="modal" >
+            <view class="td">{{item.suckleDate}} {{item.suckleTime}}</view>
+            <view class="td">{{item.appetite}}</view>
+        </view>
+    </view>
+    <button type="primary" size='default' bindtap="modal" data-id=''>添加数据</button>
+</view>
+<modal show="{{showModal}}" style="height:200px" modalData='{{modalData}}' bindcancel="modalCancel" bindconfirm='modalSave' bind:myevent="onMyEvent"> 
+  <view class='modal-content'><saveModal/></view> 
+</modal>

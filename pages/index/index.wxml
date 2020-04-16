@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 进入系统 </button>
+    <view  wx:if="{{!hasUserInfo && canIUse}}" style="margin:20px 10px">
+      <text style="color:red">本系统属于记事本工具，因根据个人信息获取相关数据，进入系统就会获取个人信息(有提示授权)，如不能授权获取个人信息，暂无法获取数据，请见谅</text>
+    </view>
+    <block wx:else>
+      <view wx:for='{{babyList}}' wx:key='itemKey' bindtap='clickBaby' data-id='{{item}}'>
+        <image class="userinfo-avatar" src="{{!item.avatarPath ? defaultImage : item.avatarPath[0]  .small}}" mode="cover"></image>
+        <text class="userinfo-nickname" style='float:right;margin-top:30px'>{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- <view class="usermotto" wx:if="{{hasUserInfo && babyList.length > 0}}">
+    <text class="user-motto">请选择宝宝</text>
+  </view> -->
+  <view class="usermotto" wx:if="{{hasUserInfo && babyList.length > 0}}">
+    <button type='primary' bindtap='jumpAdd'>添加宝宝</button>
+  </view>
+</view>
