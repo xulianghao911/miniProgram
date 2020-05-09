@@ -22,7 +22,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.7",
 	"appid": "wx65f7c403fa108056",
-	"projectname": "baby",
+	"projectname": "miniProgram",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
