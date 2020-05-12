@@ -54,7 +54,7 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
-    })
+    });
   },
 
   //  获取宝宝列表信息
@@ -83,11 +83,11 @@ Page({
           });
 
           //  跳转到添加页面
-          // setTimeout(function () {
-          //   wx.navigateTo({
-          //     url: '../addBaby/addBaby'
-          //   })
-          // }, 3000);
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../addBaby/addBaby'
+            })
+          }, 1000);
         }
       })
       .catch(res => {

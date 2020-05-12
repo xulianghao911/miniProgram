@@ -16,7 +16,7 @@
       <view class="weui-cell__bd">
           <view class='ui_uploader_cell'>
             <!-- 根据已选择的图片临时路径数组展示图片-->
-            <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{imgKey}}">
+            <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="imgKey">
               <!-- 删除-->
               <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}"    
                  type="clear" size="20" color="red"/>

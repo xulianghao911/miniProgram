@@ -369,7 +369,31 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    let pages = getCurrentPages(); //页面栈
+    let beforePage = pages[pages.length - 2];
+    // console.log(beforePage.route)
 
+    // wx.navigateBack({
+    //   delta: 1, //返回的页面数，如果 delta 大于现有页面数，则返回到首页。
+    //   success: function () {
+    //     if (beforePage.route == 'pages/commodity/mySupply') {
+    //       beforePage.onLoad() //这个函数式调用接口的函数
+    //     }
+    //   }
+    // })
+
+    // wx.switchTab({});    //tabBar页面的跳转
+    wx.navigateTo({       //非tabBar页面的跳转
+      url: '/' + beforePage.route,
+      success: function () {
+        if (beforePage.route == 'pages/index/index') {
+          beforePage.fetchBabyList()
+        }
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
   },
 
   /**
